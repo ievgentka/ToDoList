@@ -63,12 +63,14 @@ class HomeViewController: BaseViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "settingsIcon")!, target: self, action: #selector(self.settingsButtonAction))
         
         self.addTaskButton.addTarget(self, action: #selector(self.addTaskButtonAction), for: .touchUpInside)
+        self.addTaskButton.accessibilityIdentifier = "add_task_button"
         
         Utils().themeView(view: self.addTaskButton)
 		
 		self.addTaskButton.isHidden = Utils().isIpad()
         
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 1))
+        self.tableView.accessibilityIdentifier = "home_screen"
     }
     
     override func setupBindings() {
@@ -328,6 +330,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.itemCountLabel.text = String(currentItem.count)
         cell.itemCountLabel.isHidden = currentItem.count == -1
+        
+        cell.accessibilityIdentifier = "\(self.homeDataSource[indexPath.row].listType.rawValue)_cell"
+        cell.itemCountLabel.accessibilityIdentifier = "\(self.homeDataSource[indexPath.row].listType.rawValue)_number"
         
         return cell
     }

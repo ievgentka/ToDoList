@@ -37,6 +37,16 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C9E08A6728AD882200ED3A49"
+               BuildableName = "ToDoListUITests.xctest"
+               BlueprintName = "ToDoListUITests"
+               ReferencedContainer = "container:ToDoList.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

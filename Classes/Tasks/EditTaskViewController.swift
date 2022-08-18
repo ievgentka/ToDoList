@@ -71,7 +71,9 @@ class EditTaskViewController: BaseViewController {
         }
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "CANCEL".localized(), style: .done, target: self, action: #selector(self.cancelAction))
+        self.navigationItem.leftBarButtonItem?.accessibilityIdentifier = "add_task_cencel_button"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SAVE".localized(), style: .done, target: self, action: #selector(self.saveAction))
+        self.navigationItem.rightBarButtonItem?.accessibilityIdentifier = "add_task_save_button"
         
         self.taskTitleTextView.text = ""
         self.taskTitleTextView.delegate = self
@@ -89,6 +91,13 @@ class EditTaskViewController: BaseViewController {
         self.updateDateButtonTitle()
         self.updateCommentsButton()
         self.updateRemindersButton()
+        
+        self.addTaskView.accessibilityIdentifier = "add_task_view"
+        self.taskTitleTextView.accessibilityIdentifier = "task_title_text_view"
+        self.dateButton.accessibilityIdentifier = "date_button"
+        self.priorityButton.accessibilityIdentifier = "priority_button"
+        self.commentButton.accessibilityIdentifier = "comment_button"
+        self.remindersButton.accessibilityIdentifier = "reminders_button"
     }
     
     override func setupBindings() {
