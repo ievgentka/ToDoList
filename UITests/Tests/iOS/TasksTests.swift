@@ -81,7 +81,7 @@ class TasksTests: BaseTest {
         XCTAssertEqual(allTasksScreen.countTasks, 0, "Incorrect number of existing tasks")
     }
     
-    func testRenameTask() {
+    func testEditTask() {
         let homeScreen = launchApp
         
         let content = CommonHelpers.randomString(charset: .english, length: 30)

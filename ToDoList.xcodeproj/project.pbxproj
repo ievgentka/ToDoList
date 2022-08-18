@@ -464,7 +464,7 @@
 				1718BE4623CCBB19009D591A /* Widget */,
 				17278CC523CE05880014B8B2 /* WatchApp */,
 				17278CD423CE05890014B8B2 /* WatchApp Extension */,
-				C9E08A6928AD882200ED3A49 /* ToDoListUITests */,
+				C9E08A6928AD882200ED3A49 /* UITests */,
 				17D18D3C221D56C4005C647B /* Products */,
 				174F9ED1221D8E7F00D9C139 /* Frameworks */,
 			);
@@ -581,13 +581,13 @@
 			path = iOS;
 			sourceTree = "<group>";
 		};
-		C9E08A6928AD882200ED3A49 /* ToDoListUITests */ = {
+		C9E08A6928AD882200ED3A49 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
 				C9E08A7728AD888C00ED3A49 /* Sources */,
 				C9E08A7328AD885600ED3A49 /* Tests */,
 			);
-			path = ToDoListUITests;
+			path = UITests;
 			sourceTree = "<group>";
 		};
 		C9E08A7328AD885600ED3A49 /* Tests */ = {
