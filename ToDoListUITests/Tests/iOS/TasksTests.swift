@@ -10,6 +10,46 @@ import XCTest
 
 class TasksTests: BaseTest {
     
+    func testCreateEmptyTask() {
+        let homeScreen = launchApp
+        let addTaskScreen = homeScreen.addTask
+        let content = CommonHelpers.randomString(charset: .english, length: 10)
+        
+        let saveErrorExist = addTaskScreen.saveEmptyTask()
+        XCTAssertTrue(saveErrorExist)
+        
+        addTaskScreen
+            .addTaskContent(content)
+            .saveTask()
+        
+        let allTaskScreen = homeScreen.openTaskList(screen: .all)
+        let notEmptyTask = allTaskScreen.getTask(name: content)
+        XCTAssertTrue(notEmptyTask.exists, "Can't create task after Save error alert occurs")
+    }
+    
+    func testCreateTasksWithSameContent() {
+        let homeScreen = launchApp
+        let content = CommonHelpers.randomString(charset: .english, length: 30)
+        
+        homeScreen
+            .addTask
+            .addTaskContent(content)
+            .saveTask()
+        XCTAssertEqual(homeScreen.tasksQuantityInside(section: .all), "1", "Incorrect number of existing tasks")
+
+        homeScreen
+            .addTask
+            .addTaskContent(content)
+            .saveTask()
+        XCTAssertEqual(homeScreen.tasksQuantityInside(section: .all), "2", "Incorrect number of existing tasks")
+        
+        let allTaskScreen = homeScreen.openTaskList(screen: .all)
+        let firstTaskContent = allTaskScreen.getTask(index: 0).content
+        XCTAssertEqual(firstTaskContent, content, "Wrong content inside created task")
+        let secondTaskContent = allTaskScreen.getTask(index: 1).content
+        XCTAssertEqual(secondTaskContent, content, "Wrong content inside created task")
+    }
+    
     func testCreateAndDeleteTasks() {
         let homeScreen = launchApp
         
@@ -20,13 +60,13 @@ class TasksTests: BaseTest {
             .addTask
             .addTaskContent(englishString)
             .saveTask()
-        XCTAssertEqual(homeScreen.tasksQuantity(.all), "1", "Incorrect number of existing tasks")
+        XCTAssertEqual(homeScreen.tasksQuantityInside(section: .all), "1", "Incorrect number of existing tasks")
 
         homeScreen
             .addTask
             .addTaskContent(сyrillicString)
             .saveTask()
-        XCTAssertEqual(homeScreen.tasksQuantity(.all), "2", "Incorrect number of existing tasks")
+        XCTAssertEqual(homeScreen.tasksQuantityInside(section: .all), "2", "Incorrect number of existing tasks")
         
         let allTasksScreen = homeScreen.openTaskList(screen: .all)
         XCTAssertEqual(allTasksScreen.countTasks, 2)
@@ -51,7 +91,7 @@ class TasksTests: BaseTest {
             .addTask
             .addTaskContent(content)
             .saveTask()
-        XCTAssertEqual(homeScreen.tasksQuantity(.all), "1", "Incorrect number of existing tasks")
+        XCTAssertEqual(homeScreen.tasksQuantityInside(section: .all), "1", "Incorrect number of existing tasks")
         
         let allTasksScreen = homeScreen.openTaskList(screen: .all)
         allTasksScreen

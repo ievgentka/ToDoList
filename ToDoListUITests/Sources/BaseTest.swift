@@ -60,7 +60,7 @@ class BaseTest: XCTestCase {
     private func deleteAllTask() {
         let homeScreen = launchApp
         
-        if homeScreen.tasksQuantity(.all) != "0" {
+        if homeScreen.tasksQuantityInside(section: .all) != "0" {
             let tasksListScreen = homeScreen.openTaskList(screen: .all)
             let countTasks = tasksListScreen.countTasks
             for _ in 0..<countTasks {

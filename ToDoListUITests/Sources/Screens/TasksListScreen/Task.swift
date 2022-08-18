@@ -31,4 +31,6 @@ public class Task {
         taskOptions.waitForOpen()
         return taskOptions
     }
+    
+    public var content: String { element.staticTexts.firstMatch.label }
 }

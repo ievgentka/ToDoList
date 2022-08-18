@@ -26,6 +26,16 @@ public class AddTaskScreen {
         saveTaskButton.tap()
         waitForElement(addTaskNavigationBar, toExist: false)
     }
+    
+    public func saveEmptyTask() -> Bool {
+        let saveTaskButton = addTaskNavigationBar.buttons["add_task_save_button"]
+        saveTaskButton.tap()
+        let alert = XCUIApplication().alerts["Error"].firstMatch
+        let isExist = alert.exists
+        alert.buttons["OK"].tap()
+        waitForElement(alert, toExist: false)
+        return isExist
+    }
  
     @discardableResult
     public func setDate(

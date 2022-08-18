@@ -35,8 +35,8 @@ public class HomeScreen {
         return TasksListScreen()
     }
     
-    public func tasksQuantity(_ inside: HomeScreenItems) -> String {
-        let quantity = inside.tasksQuantity.label
+    public func tasksQuantityInside(section: HomeScreenItems) -> String {
+        let quantity = section.tasksQuantity.label
         return quantity
     } 
 }
