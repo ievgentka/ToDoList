@@ -24,7 +24,6 @@ public class CommonHelpers {
         case english = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 !@#$%^&* ()?/[]{}~+-"
         case сyrillic = "йцукенгшщзхїґфивапролджєюбьтімсчя !@#$%^&* ()?/[]{}~+-"
     }
-    
 }
 
 public func waitForElement(
@@ -36,7 +35,7 @@ public func waitForElement(
 ) {
     let predicate = NSPredicate(format: "exists == \(toExist)")
     let expectation = XCTNSPredicateExpectation(predicate: predicate, object: element)
-
+    
     waitForPredicate(
         expectation,
         timeOut: timeOut,
@@ -54,7 +53,7 @@ public func waitForHittable(
 ) {
     let predicate = NSPredicate(format: "hittable == \(hittable)")
     let expectation = XCTNSPredicateExpectation(predicate: predicate, object: element)
-
+    
     waitForPredicate(
         expectation,
         timeOut: timeOut,
@@ -72,7 +71,7 @@ public func waitForCount(
 ) {
     let predicate = NSPredicate(format: "count == \(count)")
     let expectation = XCTNSPredicateExpectation(predicate: predicate, object: query)
-
+    
     waitForPredicate(
         expectation,
         timeOut: timeOut,

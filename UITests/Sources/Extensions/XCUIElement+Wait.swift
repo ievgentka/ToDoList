@@ -15,7 +15,7 @@ extension XCUIElement {
         waitForElement(self)
         return self
     }
-
+    
     public func waitToBeHittable() -> XCUIElement {
         waitForHittable(self)
         return self

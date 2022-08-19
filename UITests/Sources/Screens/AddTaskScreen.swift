@@ -36,7 +36,7 @@ public class AddTaskScreen {
         waitForElement(alert, toExist: false)
         return isExist
     }
- 
+    
     @discardableResult
     public func setDate(
         day: String? = nil,
@@ -62,7 +62,7 @@ public class AddTaskScreen {
         if timePeriod != nil {
             datePicker.pickerWheels.element(boundBy: 3).adjust(toPickerWheelValue: timePeriod!)
         }
-
+        
         let saveDateButton = XCUIApplication().toolbars["Toolbar"].buttons["Save"]
         saveDateButton.tap()
         waitForElement(datePicker, toExist: false)

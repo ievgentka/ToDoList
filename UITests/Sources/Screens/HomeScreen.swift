@@ -12,7 +12,7 @@ import XCTest
 public class HomeScreen {
     
     public func waitToExist() {
-        XCUIApplication().windows.tables["home_screen"].waitToExist()
+        _ = XCUIApplication().windows.tables["home_screen"].waitToExist()
     }
     
     public var addTask: AddTaskScreen {

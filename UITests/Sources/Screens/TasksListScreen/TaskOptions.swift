@@ -12,7 +12,7 @@ public class TaskOptions {
     private let taskOptionsSheet = XCUIApplication().sheets["Task options"]
     
     public func waitForOpen() {
-       _ = taskOptionsSheet.waitToExist()
+        _ = taskOptionsSheet.waitToExist()
     }
     
     public var openEditOption: EditTaskScreen {

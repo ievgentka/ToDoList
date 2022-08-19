@@ -13,7 +13,7 @@ public class TasksListScreen {
     private var tasksCells = XCUIApplication().cells.matching(identifier: "task_list_cell")
     
     public func waitForOpen() {
-       _ = addTaskButton.waitToExist()
+        _ = addTaskButton.waitToExist()
     }
     
     public var addTask: AddTaskScreen {

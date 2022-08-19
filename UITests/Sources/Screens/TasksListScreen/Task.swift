@@ -10,11 +10,11 @@ import XCTest
 
 public class Task {
     private let element: XCUIElement
-
+    
     init(element: XCUIElement) {
         self.element = element
     }
-
+    
     public var exists: Bool {
         element.exists
     }
