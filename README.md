@@ -6,6 +6,41 @@
 
 A simple To-do list app build for iPhone, iPad and Apple Watch in Swift 5 (iOS 11+, watchOS 6+)
 
+## UITests
+
+### Tests requirements
+- iOS devices only (iPadOS devices do **not** supports yet)
+- Tests verified on target: Simulator iPhone 13 Pro iOS 15.5
+
+### Exist tests
+1. CreateEmptyTask
+- Validate error alert while saving empty task
+- Validate alert closing
+- Validate add content to the task and it save after alert closing
+
+2. CreateTasksWithSameContent
+- Create two tasks with the same name 
+- Validate that two new tasks have been created
+- Validate that the new task has identical names
+
+3. CreateAndDeleteTasks
+- Create one task with English letters and special characters
+- Create one task with Cyrillic letters and special characters
+- Validate that both tasks  have been created and have the correct content.
+- Delete both tasks and validate it deletion
+
+4. EditTask
+- Create task
+- Open task and delete all text content
+- Add new text content to the task and save it
+- Validate that task is saved with correct content
+- Delete task
+
+### Tests infrastructure
+- Added big list of AccessibilityIdentifiers for App elements, but not for all(this takes too much time, so temporary for some elements used they labels)
+- Created Page Object Model (UITests/Sources/Screens/)
+- Added support files and extensions (UITests/Sources)
+
 ## Main features
 - [x] Persistent task lists using Realm
 - [x] iCloud Kit support for syncing

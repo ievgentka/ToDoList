@@ -15,7 +15,7 @@ class FeedbackPageBLTNItem: BLTNPageItem {
     override func actionButtonTapped(sender: UIButton) {
 		feedbackGenerator.prepare()
         feedbackGenerator.selectionChanged()
-
+        actionButton?.accessibilityIdentifier = "cont_button"
         super.actionButtonTapped(sender: sender)
     }
 

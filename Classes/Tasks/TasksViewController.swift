@@ -50,6 +50,7 @@ class TasksViewController: BaseViewController {
         super.setupUI()
         
         self.addTaskButton.addTarget(self, action: #selector(self.addTaskButtonAction), for: .touchUpInside)
+        self.addTaskButton.accessibilityIdentifier = "item_add_task_button"
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "sortIcon")!, target: self, action: #selector(self.sortButtonAction))
 		
@@ -69,13 +70,13 @@ class TasksViewController: BaseViewController {
 		self.searchController.searchBar.tintColor = UIColor.white
 //        self.searchController.searchBar.barTintColor = Utils().getCurrentThemeColor()
 //        self.navigationController?.view.backgroundColor = Utils().getCurrentThemeColor()
-        
+        if #available(iOS 13.0, *) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = Utils().getCurrentThemeColor()
         self.navigationController?.navigationBar.standardAppearance = appearance;
         self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
-
+        }
 
         self.definesPresentationContext = true
         
@@ -339,6 +340,8 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.checkBoxButton.tag = indexPath.row
         cell.checkBoxButton.addTarget(self, action: #selector(self.completeTaskSelector), for: .touchUpInside)
+        
+        cell.accessibilityIdentifier = "task_list_cell"
         
         if let completedDate = currentTask.completedDate, self.selectedType == .Completed {
             let prefix = "TASKS_COMPLETED".localized() + " "
