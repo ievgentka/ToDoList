@@ -17,48 +17,48 @@ A simple To-do list app build for iPhone, iPad and Apple Watch in Swift 5 (iOS 1
 - Created Page Object Model (UITests/Sources/Screens/)
 - Added support files and extensions (UITests/Sources)
 
-### Exist tests
-1. CreateEmptyTask
+### Exist tests:
+```CreateEmptyTask```
 - Validate error alert while saving empty task
 - Validate alert closing
 - Validate add content to the task and it save after alert closing
 
-2. CancelCreateTask
+```CancelCreateTask```
 - Validate cancel create task
 - Validate ability to create task after cancel action
 
-3. CreateTasksWithSameContent
+```CreateTasksWithSameContent```
 - Create two tasks with the same name 
 - Validate that two new tasks have been created
 - Validate that the new task has identical names
 
-4. CreateTasksWithHugeString
+```CreateTasksWithHugeString```
 - Validate ability to create task with 1000 symbols
 
-5. CreateTaskForToday
+```CreateTaskForToday```
 - Validate ability to create task for Today 
 - Validate that task appears in the correct sections 
 
-6. CreateTaskForTomorrow
+```CreateTaskForTomorrow```
 - Validate ability to create task for Tomorrow 
 - Validate that task appears in the correct sections 
 
-7. CreateTaskNextSevenDays
+```CreateTaskNextSevenDays```
 - Validate ability to create task with due date in seven days  
 - Validate that task appears in the correct sections 
 
-8. CreateTaskNextEightDays
+```CreateTaskNextEightDays```
 - Validate ability to create task with due date in eight days  
 - Validate that task appears in the correct sections 
 
-9. EditTask
+```EditTask```
 - Create task
 - Open task and delete all text content
 - Add new text content to the task and save it
 - Validate that task is saved with correct content
 - Delete task
 
-10. DeleteTasks
+```DeleteTasks```
 - Create one task with English letters and special characters
 - Create one task with Cyrillic letters and special characters
 - Validate that both tasks  have been created and have the correct content.
