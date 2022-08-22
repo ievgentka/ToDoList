@@ -43,6 +43,22 @@ public class TasksListScreen {
         let task = tasksCells.element(boundBy: index)
         return Task(element: task)
     }
+    
+    public func getTask(date: TasksDate) -> Task{
+        let dateLabel: String
+        
+        switch date {
+        case .today:
+            dateLabel = "Today"
+        case.tomorrow:
+            dateLabel = "Tomorrow"
+        default:
+            dateLabel = date.day(withFormat: "dd MMM")
+        }
+        
+        let task = tasksCells.containing(NSPredicate(format: "label CONTAINS '\(dateLabel)'"))
+        return Task(element: task.element)
+    }
 }
 
 

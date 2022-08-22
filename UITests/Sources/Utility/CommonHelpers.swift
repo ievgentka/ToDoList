@@ -21,9 +21,25 @@ public class CommonHelpers {
     }
     
     public enum SymbolsList: String {
-        case english = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 !@#$%^&* ()?/[]{}~+-"
+        case english = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 !@#$%^&* ()?/[]{}~+-/n"
         case сyrillic = "йцукенгшщзхїґфивапролджєюбьтімсчя !@#$%^&* ()?/[]{}~+-"
     }
+    
+    public func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "MM/dd/yyyy"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+            let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+        return nil
+    }
+    
 }
 
 public func waitForElement(

@@ -27,6 +27,12 @@ public class AddTaskScreen {
         waitForElement(addTaskNavigationBar, toExist: false)
     }
     
+    public func cancelTaskCreation() {
+        let cancelTaskCreationButton = addTaskNavigationBar.buttons["add_task_cencel_button"]
+        cancelTaskCreationButton.tap()
+        waitForElement(addTaskNavigationBar, toExist: false)
+    }
+    
     public func saveEmptyTask() -> Bool {
         let saveTaskButton = addTaskNavigationBar.buttons["add_task_save_button"]
         saveTaskButton.tap()
@@ -39,7 +45,7 @@ public class AddTaskScreen {
     
     @discardableResult
     public func setDate(
-        day: String? = nil,
+        day: TasksDate = .today,
         hour: String? = nil,
         minutes: String? = nil,
         timePeriod: String? = nil
@@ -49,10 +55,9 @@ public class AddTaskScreen {
         
         let datePicker = XCUIApplication().datePickers.firstMatch
         waitForElement(datePicker, toExist: true)
-        
-        if day != nil {
-            datePicker.pickerWheels.element(boundBy: 0).adjust(toPickerWheelValue: day!)
-        }
+
+        datePicker.pickerWheels.element(boundBy: 0).adjust(toPickerWheelValue: day.day())
+
         if hour != nil {
             datePicker.pickerWheels.element(boundBy: 1).adjust(toPickerWheelValue: hour!)
         }
@@ -68,5 +73,37 @@ public class AddTaskScreen {
         waitForElement(datePicker, toExist: false)
         
         return self
+    }
+    
+}
+
+public enum TasksDate: String {
+    case today
+    case tomorrow
+    case afterTwoDays
+    case afterSevenDays
+    case afterEightDays
+    
+    public func day(withFormat: String = "MMM dd") -> String {
+        switch self {
+        case .today:
+            return increaseCurrentDateBy(days: 0, withFormat: withFormat)
+        case .tomorrow:
+            return increaseCurrentDateBy(days: 1, withFormat: withFormat)
+        case .afterTwoDays:
+            return increaseCurrentDateBy(days: 2, withFormat: withFormat)
+        case .afterSevenDays:
+            return increaseCurrentDateBy(days: 7, withFormat: withFormat)
+        case .afterEightDays:
+            return increaseCurrentDateBy(days: 8, withFormat: withFormat)
+        }
+    }
+    
+    private func increaseCurrentDateBy(days: Double, withFormat: String) -> String {
+        let date = Date().addingTimeInterval(days*24*60*60).formatted().components(separatedBy: ",")
+        let day = date[0]
+        let formattedDay = CommonHelpers().formattedDateFromString(dateString: day, withFormat: withFormat)!
+        
+        return formattedDay
     }
 }
