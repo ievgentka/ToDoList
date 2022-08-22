@@ -30,18 +30,14 @@ class CreateTaskTests: BaseTest {
     
     func testCancelCreateTask() {
         let homeScreen = launchApp
+        
         homeScreen
             .addTask
             .cancelTaskCreation()
         XCTAssertEqual(homeScreen.tasksQuantityInside(section: .all), "0", "Incorrect number of created tasks. Expected result: 0 task")
         
         let content = CommonHelpers.randomString(charset: .english, length: 10)
-        homeScreen
-            .addTask
-            .addTaskContent(content)
-            .cancelTaskCreation()
-        XCTAssertEqual(homeScreen.tasksQuantityInside(section: .all), "0", "Incorrect number of created tasks. Expected result: 0 task")
-    
+        
         homeScreen
             .addTask
             .addTaskContent(content)
