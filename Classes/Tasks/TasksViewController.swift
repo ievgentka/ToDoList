@@ -342,6 +342,7 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
         cell.checkBoxButton.addTarget(self, action: #selector(self.completeTaskSelector), for: .touchUpInside)
         
         cell.accessibilityIdentifier = "task_list_cell"
+        cell.taskDateLabel.accessibilityIdentifier = "task_date"
         
         if let completedDate = currentTask.completedDate, self.selectedType == .Completed {
             let prefix = "TASKS_COMPLETED".localized() + " "
