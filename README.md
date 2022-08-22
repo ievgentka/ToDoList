@@ -17,7 +17,9 @@ A simple To-do list app build for iPhone, iPad and Apple Watch in Swift 5 (iOS 1
 - Created Page Object Model (UITests/Sources/Screens/)
 - Added support files and extensions (UITests/Sources)
 
-### Exist tests:
+### Exist tests
+This lists only part of possible UI Tests. It is possible to create many more tests with Create, Delete and Edit functionality. For example add to tests Priority, Comments, Reminder features validation or create tests with put the app in background, etc.
+
 ```CreateEmptyTask```
 - Validate error alert while saving empty task
 - Validate alert closing
